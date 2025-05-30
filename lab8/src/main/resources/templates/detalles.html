@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>Post completo</title>
+    <link rel="stylesheet" th:href="@{css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{js/bootstrap.bundle.min.js}">
+</head>
+<body>
+
+<div class="card">
+    <div class="card-header">
+        <h3><span th:text="${post.titulo}"></span></h3>
+    </div>
+    <div class="card-body">
+        <p th:text="${post.contenido}"></p>
+    </div>
+</div>
+
+</body>
+</html>

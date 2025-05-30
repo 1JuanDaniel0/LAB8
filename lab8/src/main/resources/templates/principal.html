@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>Bienvenido al Blog</title>
+    <link rel="stylesheet" th:href="@{css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{js/bootstrap.bundle.min.js}">
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="card">
+    <div class="card-header">
+        <form th:action="@{/posts/crearEntrada}" method="post">
+            <button type="submit" class="btn btn-primary">Crear Nueva Entrada</button>
+        </form>
+    </div>
+    <div class="card-body">
+        <table class="table table-responsive table-striped" id="tablaPosts">
+            <thead>
+                <tr>
+                    <th>Titulo</th>
+                    <th>Autor</th>
+                    <th>Fecha de Publicación</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="post : ${posts}">
+                    <td><span th:text="${post.titulo}"></span></td>
+                    <td><span th:text="${post.getAutor()}"></span></td>
+                    <td><span th:text="${post.fechaPublicacion}"></span></td>
+                    <td>
+                        <a th:href="@{/detalles(id=${post.id})}" class="btn btn-primary" title="Ver Completo">
+                            <i class="bx bx-show"></i>
+                        </a>
+                        <a th:href="@{/editarPost(id=${post.id})}" class="btn btn-info" title="Editar post">
+                            <i class="bx bx-pencil"></i>
+                        </a>
+                        <a th:href="@{/eliminarPost(id=${post.id})}" class="btn btn-danger" title="Eliminar post">
+                            <i class="bx bx-x"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
